@@ -123,5 +123,6 @@ Pacman_R1.move(-left_L1);
 int right_R1 = main.get_digital(DIGITAL_R1);
 Pacman_L1.move(-left_L1);
 Pacman_R1.move(left_L1);
+
 	 }
  }
