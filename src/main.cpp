@@ -76,21 +76,52 @@ void autonomous() {}
 
 
 void opcontrol() {
-	//INITIALIZATION
+	//INITIALIZATION, MOVEMENT MOTORS
  pros::Motor front_L(10);
  pros::Motor front_R(4);
  pros::Motor back_L(8);
  pros::Motor back_R(3);
+//LIFT MOTORS
+ pros::Motor Lift_R1(11);//can we combine 2 ports to make 2 motor functions instead of 4
+ pros::Motor Lift_R2(2);
+ pros::Motor Lift_L1(9);
+ pros::Motor Lift_L2(15);
+ //INTAKE
+ pros::Motor Pacman_L1(20);
+ pros::Motor Pacman_R1(12);
+
  pros::Controller main(pros::E_CONTROLLER_MASTER);
  //CONTROL PERIOD: MOVING/CONTROLLING
  while(true) {
-	 int left_y = main.get_analog(ANALOG_LEFT_Y);
+	 int left_y = main.get_analog(ANALOG_LEFT_Y); //LEFT ANALOG
 	  front_L.move( left_y);
 	  back_L.move( left_y);
+		//WHY NOT USE JUST LEFT ANALOG FOR FORWARD AND BACKWARD BOTH SIDES?
+		// THEN USE RIGHT ANALOG FOR TURNING AND SHIT
 	 int right_y = main.get_analog(ANALOG_RIGHT_Y);
 	  front_R.move( -right_y);
 	  back_R.move( -right_y);
 	 pros::delay(2);
+//LIFT MOVEMENT
+	 int left_L2 = main.get_digital(DIGITAL_L2);
+	 Lift_L1.move(left_L2);
+	 Lift_L2.move(left_L2);
+	 Lift_R1.move(-left_L2);
+	 Lift_R2.move(-left_L2);
 
+	 int right_R2 = main.get_digital(DIGITAL_R2);
+	 Lift_L1.move(-right_R2);
+	 Lift_L2.move(-right_R2);
+	 Lift_R1.move(right_R2);
+	 Lift_R2.move(right_R2);
+
+	 //INTAKE
+int left_L1 = main.get_digital(DIGITAL_L1);
+Pacman_L1.move(left_L1);
+Pacman_R1.move(-left_L1);
+
+int right_R1 = main.get_digital(DIGITAL_R1);
+Pacman_L1.move(-left_L1);
+Pacman_R1.move(left_L1);
 	 }
  }
