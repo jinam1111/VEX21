@@ -103,24 +103,24 @@ void opcontrol() {
 	  back_R.move( -right_y);
 	 pros::delay(2);
 //LIFT MOVEMENT
-	 int left_L2 = main.get_digital(DIGITAL_L2);
+	 int left_L2 = 127*main.get_digital(DIGITAL_L2);
 	 Lift_L1.move(left_L2);
 	 Lift_L2.move(left_L2);
 	 Lift_R1.move(-left_L2);
 	 Lift_R2.move(-left_L2);
 
-	 int right_R2 = main.get_digital(DIGITAL_R2);
+	 int right_R2 = 127*main.get_digital(DIGITAL_R2);
 	 Lift_L1.move(-right_R2);
 	 Lift_L2.move(-right_R2);
 	 Lift_R1.move(right_R2);
 	 Lift_R2.move(right_R2);
 
 	 //INTAKE
-int left_L1 = main.get_digital(DIGITAL_L1);
+int left_L1 = 127*main.get_digital(DIGITAL_L1);
 Pacman_L1.move(left_L1);
 Pacman_R1.move(-left_L1);
 
-int right_R1 = main.get_digital(DIGITAL_R1);
+int right_R1 = 127*main.get_digital(DIGITAL_R1);
 Pacman_L1.move(-left_L1);
 Pacman_R1.move(left_L1);
 
