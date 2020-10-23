@@ -101,7 +101,7 @@ void opcontrol() {
 	 int right_y = main.get_analog(ANALOG_RIGHT_Y);
 	  front_R.move( -right_y);
 	  back_R.move( -right_y);
-	 pros::delay(2);
+
 //LIFT MOVEMENT
 	 int left_L2 = 127*main.get_digital(DIGITAL_L2);
 	 Lift_L1.move(left_L2);
@@ -123,6 +123,6 @@ Pacman_R1.move(-left_L1);
 int right_R1 = 127*main.get_digital(DIGITAL_R1);
 Pacman_L1.move(-left_L1);
 Pacman_R1.move(left_L1);
-
+pros::delay(2);
 	 }
  }
